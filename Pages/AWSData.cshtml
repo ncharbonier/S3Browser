@@ -1,0 +1,25 @@
+﻿@page
+@model AWSDataModel
+@{
+}
+
+
+<form method="post">
+    <p>
+        <label for="AWSAccess.AccessId" d>AWS Access Key Id:</label>
+        <input type="text" name="AWSAccess.AccessId" />
+    </p>
+    <p>
+        <label for="AWSAccess.AccessSecret">AWS Secret Access Key:</label>
+        <input type="text" name="AWSAccess.AccessSecret" />
+    </p>
+    <p>
+        <label for="AWSAccess.Bucket">Bucket:</label>
+        <input type="text" name="AWSAccess.Bucket" />
+    </p>
+    <p>
+        <label for="AWSAccess.Prefix">Prefix:</label>
+        <input type="text" name="AWSAccess.Prefix" />
+    </p>
+    <p><input type="submit" value="Access" /></p>
+</form>

@@ -1,0 +1,24 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to S3 Browser</h1>
+    @foreach (var item in Model.Buckets)
+    {
+        <a href="?bucket=@item">
+            @Html.DisplayFor(modelItem => item)
+        </a>
+    }
+    @foreach (var item in Model.Items)
+    {
+        <p>
+            <a href="Download?bucket=@item.BucketName&item=@item.Key" target="_blank">
+                @Html.DisplayFor(modelItem => item.Key)
+            </a>
+            - Size: @Html.DisplayFor(modelItem => item.Size)
+        </p>
+    }
+</div>
