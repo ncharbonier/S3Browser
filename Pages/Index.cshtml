@@ -8,17 +8,37 @@
     <h1 class="display-4">Welcome to S3 Browser</h1>
     @foreach (var item in Model.Buckets)
     {
-        <a href="?bucket=@item">
-            @Html.DisplayFor(modelItem => item)
-        </a>
+        <p>
+            <a href="?bucket=@item">
+                @Html.DisplayFor(modelItem => item)
+            </a>
+        </p>
     }
     @foreach (var item in Model.Items)
     {
+        @if (item.Size == 0)
+        {
+            <p>
+                <a href="?bucket=@item.BucketName&prefix=@item.Key">
+                    @Html.DisplayFor(modelItem => item.Key)
+                </a>
+                - Size: @Html.DisplayFor(modelItem => item.Size)
+            </p>
+        }
+        else
+        {
+            <p>
+                <a href="Download?bucket=@item.BucketName&item=@Uri.EscapeDataString(item.Key)" target="_blank">
+                    @Html.DisplayFor(modelItem => item.Key)
+                </a>
+                - Size: @Html.DisplayFor(modelItem => item.Size)
+            </p>
+        }
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Token))
+    {
         <p>
-            <a href="Download?bucket=@item.BucketName&item=@item.Key" target="_blank">
-                @Html.DisplayFor(modelItem => item.Key)
-            </a>
-            - Size: @Html.DisplayFor(modelItem => item.Size)
+            <a href="?token=@Uri.EscapeDataString(Model.Token)&bucket=@Model.BucketName&prefix=@Model.Prefix">Next Page</a>
         </p>
     }
 </div>
