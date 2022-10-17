@@ -29,7 +29,7 @@ namespace S3Browser
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromSeconds(30);
+                options.IdleTimeout = TimeSpan.FromSeconds(300);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
